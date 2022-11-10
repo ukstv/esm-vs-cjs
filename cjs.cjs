@@ -8,6 +8,11 @@ class CJSClass {
   }
 }
 
+function right(value) {
+  return { _tag: 'Right', right: value }
+}
+
 module.exports = {
-  CJSClass
+  CJSClass,
+  right
 }
