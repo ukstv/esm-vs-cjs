@@ -7,3 +7,7 @@ export class ESMClass {
     return this.foo
   }
 }
+
+export function right(value) {
+  return { _tag: 'Right', right: value }
+}

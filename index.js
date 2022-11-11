@@ -7,9 +7,10 @@ $ npx playwright-test dist/src/index.js --runner benchmark
 
 import Benchmark from 'benchmark'
 import cjs from './cjs.cjs'
-import { ESMClass } from './esm.js'
+import { ESMClass, right as esmRight } from './esm.js'
 
 const CJSClass = cjs.CJSClass
+const cjsRight = cjs.right
 
 new Benchmark.Suite()
   .add('esm', () => {
@@ -19,6 +20,12 @@ new Benchmark.Suite()
   .add('cjs', () => {
     const obj = new CJSClass()
     obj.method()
+  })
+  .add('esm right', () => {
+    esmRight(Math.random())
+  })
+  .add('cjs right', () => {
+    cjsRight(Math.random())
   })
   .on('error', (err) => {
     console.error(err)
